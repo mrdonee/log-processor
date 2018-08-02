@@ -9,11 +9,11 @@
 #ifndef Logman_hpp
 #define Logman_hpp
 
-#include <stdio.h>
 #include "Structs.hpp"
-#include <vector>
-#include <unordered_map>
 #include <set>
+#include <stdio.h>
+#include <unordered_map>
+#include <vector>
 
 class Logman {
     struct LogMsgTimeComp {
@@ -26,6 +26,10 @@ public:
     vector<LogMsg> masterFiles;
     set<LogMsg*, LogMsgTimeComp> masterSortedByTime;
     vector<LogMsg*> excerptList;
+    
+    void processInput(const string &filename);
+    
+    void setItrs(set<LogMsg*>::iterator &lowerBound, set<LogMsg*>::iterator &upperBound);
 };
 
 #endif /* Logman_hpp */

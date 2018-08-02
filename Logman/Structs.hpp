@@ -9,9 +9,9 @@
 #ifndef Structs_hpp
 #define Structs_hpp
 
+#include <algorithm>
 #include <stdio.h>
 #include <string>
-#include <algorithm>
 using namespace std;
 
 class LogMsg {
@@ -34,6 +34,10 @@ public:
     string getCategory() const { return category; }
     string getMsg() const { return msg; }
     int getEntryId() const { return entryId; }
+};
+
+struct LogMsgTimeComp {
+    bool operator()(const LogMsg* lhs, const LogMsg* rhs) const;
 };
 
 #endif /* Structs_hpp */
