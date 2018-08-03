@@ -29,7 +29,7 @@ public:
     
     void processInput(const string &filename);
     
-    void setItrs(set<LogMsg*>::iterator &lowerBound, set<LogMsg*>::iterator &upperBound);
+    void setItrs(set<LogMsg*>::iterator &lowerBound, set<LogMsg*>::iterator &upperBound, string &timeArg);
 };
 
 #endif /* Logman_hpp */

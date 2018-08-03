@@ -18,8 +18,7 @@ void Logman::processInput(const string &filename) {
     if (myfile.is_open()) {
         while (getline(myfile,line)) {
             string t = line.substr(0, line.find('|'));
-            getTimeInt(t);
-            int time = stoi(t);
+            int time = getTimeInt(t);
             line = line.substr(line.find('|') + 1, line.length());
             string c = line.substr(0, line.find('|'));
             string m = line.substr(line.find('|') + 1, line.length());
@@ -36,10 +35,14 @@ void Logman::processInput(const string &filename) {
     cout << entryIdCtr << " entries loaded\n";
 }
 
-void Logman::setItrs(set<LogMsg*>::iterator &lwr, set<LogMsg*>::iterator &upr) {
+void Logman::setItrs(set<LogMsg*>::iterator &lwr, set<LogMsg*>::iterator &upr, string &timeArg) {
     LogMsg tmpMsg;
-    tmpMsg = LogMsg(425215536, "", "", 0);
+    string t1Str = timeArg.substr(0, timeArg.find('|'));
+    int t1 = getTimeInt(t1Str);
+    timeArg = timeArg.substr(timeArg.find('|') + 1, timeArg.length());
+    int t2 = getTimeInt(timeArg);
+    tmpMsg = LogMsg(t1, "", "", 0);
     lwr = masterSortedByTime.lower_bound(&tmpMsg);
-    tmpMsg = LogMsg(702101300 - 1, "", "", 0);
+    tmpMsg = LogMsg(t2 - 1, "", "", 0);
     upr = masterSortedByTime.upper_bound(&tmpMsg);
 }

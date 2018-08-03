@@ -9,11 +9,11 @@
 #ifndef Utils_h
 #define Utils_h
 
-void getTimeInt(string &s);
+int getTimeInt(string &s);
 
 string getTimeStr(int i);
 
-void printRecentTime(set<LogMsg*>::iterator start, set<LogMsg*>::iterator end);
+void printRecentTime(set<LogMsg*>::iterator start, set<LogMsg*>::iterator &end);
 
 
 #endif /* Utils_h */

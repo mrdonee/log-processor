@@ -12,8 +12,9 @@
 #include <stdio.h>
 using namespace std;
 
-void getTimeInt(string &s) {
+int getTimeInt(string &s) {
     s.erase(remove(s.begin(), s.end(), ':'), s.end());
+    return stoi(s);
 }
 
 string getTimeStr(int i) {
@@ -27,7 +28,7 @@ string getTimeStr(int i) {
 }
 
 //make this applicable to all iterators
-void printRecentTime(set<LogMsg*>::iterator start, set<LogMsg*>::iterator end) {
+void printRecentTime(set<LogMsg*>::iterator start, set<LogMsg*>::iterator &end) {
     while (start != end) {
         string timeStr = getTimeStr((*start)->getTimestamp());
         cout << timeStr << "|" << (*start)->getCategory() << "|" << (*start)->getMsg() << endl;

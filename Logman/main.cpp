@@ -25,7 +25,7 @@ int main(int argc, const char * argv[]) {
         switch (cmd) {
             case 't':
                 cin >> args;
-                master.setItrs(lowerBound, upperBound);
+                master.setItrs(lowerBound, upperBound, args);
                 cout << distance(lowerBound, upperBound) << endl;
                 break;
             case 'c':
